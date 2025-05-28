@@ -47,49 +47,27 @@
       --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
+    /* Enhanced Parallax Header */
+    .parallax-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 100px;
     }
 
-    ::-webkit-scrollbar-track {
-      background: var(--bg-secondary);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--orange);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--orange-light);
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .fade-in { animation: fadeIn 0.8s ease-in-out; }
-    .pulse:hover { animation: pulse 1.5s infinite; }
-
-    /* Header with Parallax Effect */
-    .parallax {
-      background-attachment: fixed;
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Akhanda_Bharat_map_in_maroon_on_white.png/800px-Akhanda_Bharat_map_in_maroon_on_white.png');
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      transform: translateZ(-10px) scale(1.1);
+      z-index: -1;
     }
 
     .header-overlay {
@@ -106,363 +84,106 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 2rem;
-    }
-
-    /* Floating Action Button */
-    .fab {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: var(--orange);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      cursor: pointer;
-    }
-
-    .fab:hover {
-      background-color: var(--orange-light);
-      transform: scale(1.1);
-    }
-
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--orange);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .back-to-top.visible { opacity: 1; }
-    .back-to-top:hover { background-color: var(--orange-light); }
-
-    /* Loading Spinner */
-    .loader {
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top: 4px solid var(--orange);
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Custom Card */
-    .card {
-      background-color: var(--bg-secondary);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .card:hover { transform: translateY(-5px); }
-
-    /* Custom Button */
-    .btn {
-      background-color: var(--orange);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn:hover {
-      background-color: var(--orange-light);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Responsive Video Container */
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      margin-bottom: 2rem;
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
       height: 100%;
-      border: none;
-    }
-
-    /* Tooltip */
-    .tooltip {
-      position: relative;
-      display: inline-block;
-    }
-
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 120px;
-      background-color: var(--orange);
-      color: white;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .modal-content {
-      background-color: var(--bg-secondary);
-      margin: 10% auto;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 800px;
-      position: relative;
-      animation: fadeIn 0.4s;
-    }
-
-    .close {
-      color: var(--text-color);
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .close:hover { color: var(--orange); }
-
-    /* Responsive Grid */
-    .grid-responsive {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: var(--bg-secondary);
-      z-index: 1500;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: all 0.5s ease;
+      text-align: center;
+      padding: 2rem;
     }
 
-    .mobile-menu.active { display: flex; }
-
-    .mobile-menu a {
-      color: var(--text-color);
-      font-size: 1.5rem;
-      margin: 1rem 0;
-      text-decoration: none;
-      transition: all 0.3s;
+    /* Floating Elements */
+    .floating {
+      animation: floating 6s ease-in-out infinite;
     }
 
-    .mobile-menu a:hover {
-      color: var(--orange);
-      transform: scale(1.1);
+    .floating-delay-1 {
+      animation-delay: 1s;
     }
 
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 1600;
+    .floating-delay-2 {
+      animation-delay: 2s;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Glow Effect */
+    .glow {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      transition: text-shadow 0.5s ease;
+    }
+
+    .glow:hover {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+
+    /* Pulse Animation */
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
       background-color: var(--orange);
       color: white;
-      padding: 0.5rem;
-      border-radius: 8px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
     }
 
-    /* Savarkar Banner */
-    .savarkar-banner {
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
-      border-radius: 12px;
+    .btn:hover {
+      background-color: var(--orange-dark);
+      transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      border: 4px solid var(--orange);
     }
 
-    /* Section Styling */
-    section {
-      padding: 3rem 0;
-      margin-bottom: 2rem;
-    }
-
-    section h2 {
-      font-size: 2.5rem;
-      color: var(--orange);
-      margin-bottom: 2rem;
-      text-align: center;
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    section h2:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: var(--orange);
-      border-radius: 2px;
-    }
-
-    .video-group { margin-bottom: 3rem; }
-
-    .video-group h3 {
-      font-size: 1.8rem;
-      color: var(--text-color);
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
-      .hamburger { display: block; }
-      nav { display: none; }
-
-      .theme-toggle, .language-toggle {
-        position: fixed;
-        top: 1rem;
-      }
-
-      .theme-toggle { right: 1rem; }
-      .language-toggle { right: 4rem; }
-
-      header h1 {
-        font-size: 2rem;
-        padding: 0.5rem 1rem;
-      }
-
-      section {
-        padding: 2rem 1rem;
-        margin: 1rem auto;
-      }
-
-      .parallax {
+      .parallax-bg {
         background-attachment: scroll;
-        height: auto;
-        min-height: 100vh;
-        padding: 2rem 0;
+        transform: none;
       }
-
-      .header-content { padding: 2rem 1rem; }
-      .savarkar-banner { max-width: 90%; margin-bottom: 2rem; }
-      .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
-      section h2 { font-size: 2rem; }
-      .video-group h3 { font-size: 1.5rem; }
+      
+      .header-content h1 {
+        font-size: 2.5rem !important;
+      }
+      
+      .header-content p {
+        font-size: 1.2rem !important;
+      }
+      
+      .savarkar-banner {
+        max-width: 80% !important;
+      }
+      
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
     }
 
-    @media (max-width: 480px) {
-      .header-content { text-align: center; }
-      .header-content .flex { flex-direction: column; gap: 1rem; }
-      .modal-content { margin: 5% auto; width: 95%; padding: 1.5rem; }
-      section h2 { font-size: 1.8rem; }
-    }
-
-    /* Collapsible Sections */
-    .collapsible {
-      cursor: pointer;
-      padding: 1rem;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--orange);
-      background-color: transparent;
-      border-bottom: 2px solid var(--orange);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .collapsible:after {
-      content: '\002B';
-      font-weight: bold;
-      margin-left: 5px;
-    }
-
-    .active:after { content: "\2212"; }
-
-    .collapsible-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      background-color: var(--bg-secondary);
-      border-radius: 0 0 12px 12px;
-    }
-
-    /* Timeline */
+    /* Timeline Styles */
     .timeline {
       position: relative;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 2rem 0;
     }
 
     .timeline::after {
@@ -474,6 +195,7 @@
       bottom: 0;
       left: 50%;
       margin-left: -3px;
+      border-radius: 3px;
     }
 
     .timeline-item {
@@ -496,8 +218,13 @@
       z-index: 1;
     }
 
-    .left { left: 0; }
-    .right { left: 50%; }
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
 
     .left::before {
       content: " ";
@@ -507,9 +234,9 @@
       width: 0;
       z-index: 1;
       right: 30px;
-      border: medium solid var(--orange);
+      border: medium solid var(--orange-light);
       border-width: 10px 0 10px 10px;
-      border-color: transparent transparent transparent var(--orange);
+      border-color: transparent transparent transparent var(--orange-light);
     }
 
     .right::before {
@@ -520,9 +247,13 @@
       width: 0;
       z-index: 1;
       left: 30px;
-      border: medium solid var(--orange);
+      border: medium solid var(--orange-light);
       border-width: 10px 10px 10px 0;
-      border-color: transparent var(--orange) transparent transparent;
+      border-color: transparent var(--orange-light) transparent transparent;
+    }
+
+    .right::after {
+      left: -12px;
     }
 
     .timeline-content {
@@ -533,13 +264,170 @@
       box-shadow: var(--shadow);
     }
 
-    @media screen and (max-width: 600px) {
-      .timeline::after { left: 31px; }
-      .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-      .timeline-item::before { left: 60px; border: medium solid var(--orange); }
-      .left::before, .right::before { border-width: 10px 10px 10px 0; border-color: transparent var(--orange) transparent transparent; }
-      .left::after, .right::after { left: 15px; }
-      .right { left: 0%; }
+    /* Video Container */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Collapsible Styles */
+    .collapsible {
+      background-color: var(--orange);
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      transition: all 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .collapsible:after {
+      content: '\002B';
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .collapsible.active:after {
+      content: "\2212";
+    }
+
+    .collapsible:hover {
+      background-color: var(--orange-dark);
+    }
+
+    .collapsible-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: var(--bg-secondary);
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: var(--bg-color);
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid var(--orange);
+      width: 80%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .close {
+      color: var(--orange);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: var(--orange-dark);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--orange);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--orange-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Fade-in Animation */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Loader Styles */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      border: 5px solid var(--orange-light);
+      border-radius: 50%;
+      border-top: 5px solid var(--orange);
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -550,47 +438,20 @@
     <div class="loader"></div>
   </div>
 
-  <!-- Hamburger Menu (Mobile Only) -->
-  <div class="hamburger" id="hamburger">
-    <i class="fas fa-bars text-xl"></i>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" class="p-2 hover:text-orange-500">मुख्य पृष्ठ</a>
-    <a href="#savarkar-movie" class="p-2 hover:text-orange-500">चित्रपट</a>
-    <a href="#videos" class="p-2 hover:text-orange-500">व्हिडिओ</a>
-    <a href="#nathuram" class="p-2 hover:text-orange-500">नाटक</a>
-    <a href="#timeline" class="p-2 hover:text-orange-500">जीवनचरित्र</a>
-    <button onclick="toggleTheme()" class="mt-4 p-2 bg-orange-500 text-white rounded-lg">
-      <i class="fas fa-moon"></i> थीम बदला
-    </button>
-    <button onclick="toggleLanguage()" class="mt-2 p-2 bg-orange-500 text-white rounded-lg">
-      <i class="fas fa-language"></i> भाषा बदला
-    </button>
-  </div>
-
-  <!-- Theme Toggle -->
-  <button class="theme-toggle fixed top-4 right-4 bg-white dark:bg-gray-800 text-orange-500 dark:text-orange-300 p-2 rounded-full shadow-lg z-50 tooltip" onclick="toggleTheme()" id="themeBtn">
-    <i class="fas fa-moon"></i>
-    <span class="tooltiptext">थीम बदला</span>
-  </button>
-
-  <!-- Language Toggle -->
-  <button class="language-toggle fixed top-4 right-16 bg-white dark:bg-gray-800 text-orange-500 dark:text-orange-300 p-2 rounded-full shadow-lg z-50 tooltip" onclick="toggleLanguage()" id="langBtn">
-    <i class="fas fa-language"></i>
-    <span class="tooltiptext">भाषा बदला</span>
-  </button>
-
-  <!-- Header with Parallax Effect -->
-  <header class="parallax flex items-center justify-center text-center relative overflow-hidden" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Akhanda_Bharat_map_in_maroon_on_white.png/800px-Akhanda_Bharat_map_in_maroon_on_white.png');">
+  <!-- Enhanced Parallax Header -->
+  <header class="parallax-container">
+    <div class="parallax-bg"></div>
     <div class="header-overlay"></div>
-    <div class="header-content px-4 w-full">
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-        <div class="text-left md:text-center">
-          <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">|| अखंड भारत ||</h1>
-          <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">विनायक दामोदर सावरकर - स्वातंत्र्यवीरांची गाथा</p>
-          <div class="flex flex-wrap justify-center gap-4">
+    <div class="header-content px-4">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+        <div class="text-center md:text-left floating">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 glow" style="text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);">
+            || अखंड भारत ||
+          </h1>
+          <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto glow floating-delay-1">
+            विनायक दामोदर सावरकर - स्वातंत्र्यवीरांची गाथा
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 floating-delay-2">
             <a href="#savarkar-movie" class="btn pulse">
               <i class="fas fa-film mr-2"></i> चित्रपट पाहा
             </a>
@@ -604,7 +465,8 @@
         </div>
         <img src="https://i.pinimg.com/736x/ce/b5/05/ceb505c850279dbcbda44db3094d735f.jpg" 
              alt="विनायक दामोदर सावरकर" 
-             class="savarkar-banner hidden md:block">
+             class="savarkar-banner hidden md:block floating" 
+             style="max-width: 400px; border-radius: 12px; box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3); border: 4px solid white;">
       </div>
     </div>
   </header>
@@ -870,51 +732,28 @@
   </div>
 
   <script>
+    // Enhanced Parallax Effect
+    window.addEventListener('scroll', function() {
+      const parallaxBg = document.querySelector('.parallax-bg');
+      const scrollPosition = window.pageYOffset;
+      
+      // Only apply parallax effect on desktop
+      if (window.innerWidth > 768) {
+        parallaxBg.style.transform = `translateZ(-10px) scale(1.1) translateY(${scrollPosition * 0.5}px)`;
+      }
+    });
+
     // Loading spinner
     window.addEventListener('load', function() {
       document.getElementById('loader').style.display = 'none';
-    });
-
-    // Mobile menu toggle
-    document.getElementById('hamburger').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.getElementById('mobileMenu').classList.remove('active');
-      });
-    });
-
-    // Theme toggle
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.dataset.theme;
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.dataset.theme = newTheme;
-      localStorage.setItem('theme', newTheme);
       
-      // Update theme button icon
-      const themeIcon = document.querySelector('#themeBtn i');
-      themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-      
-      // Update tooltip text
-      const tooltipText = document.querySelector('#themeBtn .tooltiptext');
-      tooltipText.textContent = newTheme === 'dark' ? 'प्रकाश मोड' : 'अंधार मोड';
-    }
-
-    // Check for saved theme preference
-    if (localStorage.getItem('theme')) {
-      document.documentElement.dataset.theme = localStorage.getItem('theme');
-      const themeIcon = document.querySelector('#themeBtn i');
-      themeIcon.className = localStorage.getItem('theme') === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-
-    // Language toggle
-    function toggleLanguage() {
-      alert("भाषा बदलण्याची सुविधा लवकरच उपलब्ध होईल!");
-    }
+      // Add floating class to elements after load
+      setTimeout(() => {
+        document.querySelector('.header-content h1').classList.add('floating');
+        document.querySelector('.header-content p').classList.add('floating-delay-1');
+        document.querySelector('.header-content .flex').classList.add('floating-delay-2');
+      }, 500);
+    });
 
     // Back to top button
     window.addEventListener('scroll', function() {
@@ -985,6 +824,30 @@
         coll.nextElementSibling.style.maxHeight = coll.nextElementSibling.scrollHeight + "px";
       });
     });
+
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.dataset.theme;
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = newTheme;
+      localStorage.setItem('theme', newTheme);
+      
+      // Update theme button icon
+      const themeIcon = document.querySelector('#themeBtn i');
+      themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      
+      // Update tooltip text
+      const tooltipText = document.querySelector('#themeBtn .tooltiptext');
+      tooltipText.textContent = newTheme === 'dark' ? 'प्रकाश मोड' : 'अंधार मोड';
+    }
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme')) {
+      document.documentElement.dataset.theme = localStorage.getItem('theme');
+      const themeIcon = document.querySelector('#themeBtn i');
+      themeIcon.className = localStorage.getItem('theme') === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
   </script>
 </body>
 </html>
