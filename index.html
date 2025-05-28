@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>|| अखंड भारत ||</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Baloo 2', sans-serif;
+      transition: all 0.3s ease-in-out;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    :root {
+      --orange: #e65100;
+      --bg-color: #fff3e0;
+      --text-color: #1e1e1e;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #ff9800c0, #ffcc80c0), url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Akhanda_Bharat_Vision.jpg') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 15px;
+    }
+
+    nav {
+      background-color: var(--orange);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: white;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .language-toggle {
+      position: absolute;
+      right: 6rem;
+      top: 1rem;
+      background: white;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 3rem 5%;
+      background-color: white;
+      margin: 2rem auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+      scroll-margin-top: 80px;
+    }
+
+    [data-theme="dark"] section {
+      background-color: #1e1e1e;
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--orange);
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero img {
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+
+    .video-group {
+      margin-bottom: 2rem;
+    }
+
+    .video-group h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  <button class="language-toggle" onclick="toggleLanguage()">🌐</button>
+
+  <header>
+    <h1>|| अखंड भारत ||</h1>
+  </header>
+
+  <nav>
+    <a href="#home">मुख्य पृष्ठ</a>
+    <a href="#savarkar-movie">चित्रपट</a>
+    <a href="#videos">व्हिडिओ</a>
+    <a href="#nathuram">नाटक</a>
+  </nav>
+
+  <section id="home">
+    <h2>विनायक दामोदर सावरकर</h2>
+    <div class="hero">
+      <img src="https://lh6.googleusercontent.com/KRss-X-WUQuM6EoeQLLXLkFNoQf67Qf-icpOzx1mUQiyCMPCArD2J0trDbhZrOXkTO0MFFFxwRmXEpSLqy-s25bjgz-YmwofX4sFMCDH4z3fYORvfJvmSU23JzPj5a6EdA=w1280" alt="विनायक दामोदर सावरकर">
+      <p>
+        (जन्म : भगूर-नाशिक, २८ मे १८८३; - मुंबई, २६ फेब्रुवारी १९६६) हे भारतीय स्वातंत्र्यसैनिक, राजकारणी, समाजसुधारक, मराठी कवी व लेखक होते. तसेच ते हिंदू तत्त्वज्ञ, आणि भाषाशुद्धी व लिपिशुद्धी ह्या चळवळींचे प्रणेते होते. १९३८ च्या साहित्य संमेलनाचे अध्यक्ष होते. 'हिंदुत्व' या संकल्पनेचे प्रणेते असून सर्वसमावेशक हिंदुत्व मांडणारे होते.
+      </p>
+    </div>
+  </section>
+
+  <section id="savarkar-movie">
+    <h2>स्वातंत्र्यवीर सावरकर (2024 चित्रपट)</h2>
+    <iframe src="https://drive.google.com/file/d/1DuGQMX6DFxJmoD3zOCNXStJkQ3TniUvA/preview" allow="autoplay"></iframe>
+  </section>
+
+  <section id="videos">
+    <h2>स्वातंत्र्यवीर सावरकर - व्हिडिओ</h2>
+    <div class="video-group">
+      <h3>पु.ल. देशपांडे:</h3>
+      <iframe src="https://www.youtube.com/embed/3OhwGqpBSUw"></iframe>
+    </div>
+    <div class="video-group">
+      <h3>शरद पोंक्षे:</h3>
+      <iframe src="https://www.youtube.com/embed/sEnDbIkJyQY"></iframe>
+      <iframe src="https://www.youtube.com/embed/39yFJLJgmIY"></iframe>
+      <iframe src="https://www.youtube.com/embed/F82c7IECTIc"></iframe>
+    </div>
+    <div class="video-group">
+      <h3>चारुदत्त आफळे:</h3>
+      <iframe src="https://www.youtube.com/embed/GguEIpps3fc"></iframe>
+      <iframe src="https://www.youtube.com/embed/6VOxG7itlT8"></iframe>
+    </div>
+  </section>
+
+  <section id="nathuram">
+    <h2>मी नथुराम गोडसे बोलतोय</h2>
+    <p>
+      सुपरहिट मराठी नाटक "मी नथुराम गोडसे बोलतोय" (Mi Nathuram Godse Boltoy) हे प्रदीप दळवी लिखित आणि माऊली प्रॉडक्शन्सच्या उदय धुरत यांनी निर्मित केलेले एक दोन अंकी नाटक आहे. हे नाटक गोपाळ गोडसे यांच्या "May It Please You Honour" या पुस्तकावर आधारित आहे.
+    </p>
+    <iframe src="https://www.youtube.com/embed/Wew_hkqWUg0"></iframe>
+  </section>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+    }
+
+    function toggleLanguage() {
+      alert("Language toggle feature coming soon!");
+    }
+  </script>
+</body>
+
+</html>
