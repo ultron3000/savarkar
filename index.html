@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>|| अखंड भारत ||</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -19,153 +21,52 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     :root {
       --orange: #e65100;
+      --orange-light: #ff9800;
+      --orange-dark: #b34700;
+      --orange-pale: #fff3e0;
       --bg-color: #fff3e0;
+      --bg-secondary: #ffe0b2;
       --text-color: #1e1e1e;
+      --text-secondary: #424242;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     [data-theme="dark"] {
+      --orange: #ff9800;
+      --orange-light: #ffb74d;
+      --orange-dark: #e65100;
+      --orange-pale: #1e1e1e;
       --bg-color: #121212;
+      --bg-secondary: #1e1e1e;
       --text-color: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
-    header {
-      background: linear-gradient(to bottom, #ff9800c0, #ffcc80c0), url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Akhanda_Bharat_Vision.jpg') no-repeat center center/cover;
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 2px 2px 5px #000;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
     }
 
-    header h1 {
-      font-size: 3rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 1rem 2rem;
-      border-radius: 15px;
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
     }
 
-    nav {
-      background-color: var(--orange);
-      padding: 1rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    ::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border-radius: 5px;
     }
 
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: bold;
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange-light);
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
-      background: white;
-      border: none;
-      padding: 0.3rem 0.6rem;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .language-toggle {
-      position: absolute;
-      right: 6rem;
-      top: 1rem;
-      background: white;
-      border: none;
-      padding: 0.3rem 0.6rem;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    section {
-      padding: 3rem 5%;
-      background-color: white;
-      margin: 2rem auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      max-width: 1200px;
-      scroll-margin-top: 80px;
-    }
-
-    [data-theme="dark"] section {
-      background-color: #1e1e1e;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-    }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--orange);
-    }
-
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero img {
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-      border-radius: 10px;
-      margin: 1rem 0;
-    }
-
-    .video-group {
-      margin-bottom: 2rem;
-    }
-
-    .video-group h3 {
-      font-size: 1.5rem;
-      color: #333;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    section {
-      animation: fadeIn 0.8s ease-in-out;
-    }
-
+    /* Animations */
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -176,75 +77,774 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .pulse:hover {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Header with Parallax Effect */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(230, 81, 0, 0.85) 0%, rgba(255, 152, 0, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 2rem;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--orange);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    .fab:hover {
+      background-color: var(--orange-light);
+      transform: scale(1.1);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 6rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--orange);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--orange-light);
+    }
+
+    /* Loading Spinner */
+    .loader {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 4px solid var(--orange);
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Custom Card */
+    .card {
+      background-color: var(--bg-secondary);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Custom Button */
+    .btn {
+      background-color: var(--orange);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn:hover {
+      background-color: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive Video Container */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: var(--orange);
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: var(--bg-secondary);
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      position: relative;
+      animation: fadeIn 0.4s;
+    }
+
+    .close {
+      color: var(--text-color);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: var(--orange);
+    }
+
+    /* Responsive Grid */
+    .grid-responsive {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--bg-secondary);
+      z-index: 1500;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s ease;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--orange);
+      transform: scale(1.1);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1600;
+      background-color: var(--orange);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    /* Savarkar Banner */
+    .savarkar-banner {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border: 4px solid var(--orange);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: var(--orange);
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    section h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+
+    .video-group {
+      margin-bottom: 3rem;
+    }
+
+    .video-group h3 {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .theme-toggle, .language-toggle {
+        position: fixed;
+        top: 1rem;
+      }
+
+      .theme-toggle {
+        right: 1rem;
+      }
+
+      .language-toggle {
+        right: 4rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+        margin: 1rem auto;
+      }
+
+      .parallax {
+        background-attachment: scroll;
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem 0;
+      }
+
+      .header-content {
+        padding: 2rem 1rem;
+      }
+
+      .savarkar-banner {
+        max-width: 90%;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .video-group h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-content {
+        text-align: center;
+      }
+
+      .header-content .flex {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        padding: 1.5rem;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 
-<body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-  <button class="language-toggle" onclick="toggleLanguage()">🌐</button>
+<body class="min-h-screen">
+  <!-- Loading Spinner -->
+  <div id="loader" class="fixed inset-0 bg-white dark:bg-gray-900 flex items-center justify-center z-50">
+    <div class="loader"></div>
+  </div>
 
-  <header>
-    <h1>|| अखंड भारत ||</h1>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars text-xl"></i>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="p-2 hover:text-orange-500">मुख्य पृष्ठ</a>
+    <a href="#savarkar-movie" class="p-2 hover:text-orange-500">चित्रपट</a>
+    <a href="#videos" class="p-2 hover:text-orange-500">व्हिडिओ</a>
+    <a href="#nathuram" class="p-2 hover:text-orange-500">नाटक</a>
+    <button onclick="toggleTheme()" class="mt-4 p-2 bg-orange-500 text-white rounded-lg">
+      <i class="fas fa-moon"></i> थीम बदला
+    </button>
+    <button onclick="toggleLanguage()" class="mt-2 p-2 bg-orange-500 text-white rounded-lg">
+      <i class="fas fa-language"></i> भाषा बदला
+    </button>
+  </div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle fixed top-4 right-4 bg-white dark:bg-gray-800 text-orange-500 dark:text-orange-300 p-2 rounded-full shadow-lg z-50 tooltip" onclick="toggleTheme()" id="themeBtn">
+    <i class="fas fa-moon"></i>
+    <span class="tooltiptext">थीम बदला</span>
+  </button>
+
+  <!-- Language Toggle -->
+  <button class="language-toggle fixed top-4 right-16 bg-white dark:bg-gray-800 text-orange-500 dark:text-orange-300 p-2 rounded-full shadow-lg z-50 tooltip" onclick="toggleLanguage()" id="langBtn">
+    <i class="fas fa-language"></i>
+    <span class="tooltiptext">भाषा बदला</span>
+  </button>
+
+  <!-- Header with Parallax Effect -->
+  <header class="parallax flex items-center justify-center text-center relative overflow-hidden" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Akhanda_Bharat_map_in_maroon_on_white.png/800px-Akhanda_Bharat_map_in_maroon_on_white.png');">
+    <div class="header-overlay"></div>
+    <div class="header-content px-4 w-full">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="text-left md:text-center">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">|| अखंड भारत ||</h1>
+          <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">विनायक दामोदर सावरकर - स्वातंत्र्यवीरांची गाथा</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#savarkar-movie" class="btn pulse">
+              <i class="fas fa-film mr-2"></i> चित्रपट पाहा
+            </a>
+            <a href="#videos" class="btn pulse">
+              <i class="fas fa-video mr-2"></i> व्हिडिओ पाहा
+            </a>
+          </div>
+        </div>
+        <img src="https://i.pinimg.com/736x/ce/b5/05/ceb505c850279dbcbda44db3094d735f.jpg" 
+             alt="विनायक दामोदर सावरकर" 
+             class="savarkar-banner hidden md:block">
+      </div>
+    </div>
   </header>
 
-  <nav>
-    <a href="#home">मुख्य पृष्ठ</a>
-    <a href="#savarkar-movie">चित्रपट</a>
-    <a href="#videos">व्हिडिओ</a>
-    <a href="#nathuram">नाटक</a>
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-40 bg-orange-500 dark:bg-orange-700 shadow-lg">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-center space-x-6">
+        <a href="#home" class="text-white hover:text-orange-100 font-bold text-lg transition duration-300">
+          <i class="fas fa-home mr-1"></i> मुख्य पृष्ठ
+        </a>
+        <a href="#savarkar-movie" class="text-white hover:text-orange-100 font-bold text-lg transition duration-300">
+          <i class="fas fa-film mr-1"></i> चित्रपट
+        </a>
+        <a href="#videos" class="text-white hover:text-orange-100 font-bold text-lg transition duration-300">
+          <i class="fas fa-video mr-1"></i> व्हिडिओ
+        </a>
+        <a href="#nathuram" class="text-white hover:text-orange-100 font-bold text-lg transition duration-300">
+          <i class="fas fa-theater-masks mr-1"></i> नाटक
+        </a>
+      </div>
+    </div>
   </nav>
 
-  <section id="home">
-    <h2>विनायक दामोदर सावरकर</h2>
-    <div class="hero">
-      <img src="https://lh6.googleusercontent.com/KRss-X-WUQuM6EoeQLLXLkFNoQf67Qf-icpOzx1mUQiyCMPCArD2J0trDbhZrOXkTO0MFFFxwRmXEpSLqy-s25bjgz-YmwofX4sFMCDH4z3fYORvfJvmSU23JzPj5a6EdA=w1280" alt="विनायक दामोदर सावरकर">
-      <p>
-        (जन्म : भगूर-नाशिक, २८ मे १८८३; - मुंबई, २६ फेब्रुवारी १९६६) हे भारतीय स्वातंत्र्यसैनिक, राजकारणी, समाजसुधारक, मराठी कवी व लेखक होते. तसेच ते हिंदू तत्त्वज्ञ, आणि भाषाशुद्धी व लिपिशुद्धी ह्या चळवळींचे प्रणेते होते. १९३८ च्या साहित्य संमेलनाचे अध्यक्ष होते. 'हिंदुत्व' या संकल्पनेचे प्रणेते असून सर्वसमावेशक हिंदुत्व मांडणारे होते.
-      </p>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Home Section -->
+    <section id="home" class="fade-in mb-12 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden">
+      <div class="p-6 md:p-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mb-6 flex items-center justify-center">
+          <i class="fas fa-user-tie mr-3"></i> विनायक दामोदर सावरकर
+        </h2>
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+          <div class="w-full md:w-1/3">
+            <img src="https://www.jagranimages.com/images/newimg/articleimage/Vinayak_Damodar_Savarkar(1).jpg" 
+                 alt="विनायक दामोदर सावरकर" 
+                 class="w-full h-auto rounded-xl shadow-lg pulse">
+          </div>
+          <div class="w-full md:w-2/3">
+            <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+              (जन्म : भगूर-नाशिक, २८ मे १८८३; - मुंबई, २६ फेब्रुवारी १९६६) हे भारतीय स्वातंत्र्यसैनिक, राजकारणी, समाजसुधारक, मराठी कवी व लेखक होते. तसेच ते हिंदू तत्त्वज्ञ, आणि भाषाशुद्धी व लिपिशुद्धी ह्या चळवळींचे प्रणेते होते. १९३८ च्या साहित्य संमेलनाचे अध्यक्ष होते. 'हिंदुत्व' या संकल्पनेचे प्रणेते असून सर्वसमावेशक हिंदुत्व मांडणारे होते.
+            </p>
+            <div class="text-center md:text-left">
+              <button onclick="openModal('savarkarModal')" class="btn mt-4">
+                <i class="fas fa-info-circle mr-2"></i> अधिक माहिती
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="savarkar-movie">
-    <h2>स्वातंत्र्यवीर सावरकर (2024 चित्रपट)</h2>
-    <iframe src="https://drive.google.com/file/d/1DuGQMX6DFxJmoD3zOCNXStJkQ3TniUvA/preview" allow="autoplay"></iframe>
-  </section>
+    <!-- Savarkar Movie Section -->
+    <section id="savarkar-movie" class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mb-6 flex items-center justify-center">
+        <i class="fas fa-film mr-3"></i> स्वातंत्र्यवीर सावरकर (2024 चित्रपट)
+      </h2>
+      <div class="video-container">
+        <iframe src="https://drive.google.com/file/d/1DuGQMX6DFxJmoD3zOCNXStJkQ3TniUvA/preview" allow="autoplay"></iframe>
+      </div>
+      <div class="mt-6 text-gray-700 dark:text-gray-300">
+        <p class="mb-4">
+          हा चित्रपट विनायक दामोदर सावरकर यांच्या जीवनावर आधारित आहे. चित्रपटात सावरकरांच्या बालपणापासून ते स्वातंत्र्यलढ्यातील योगदान, कालापाणीच्या शिक्षेदरम्यानच्या कठीण क्षणांपर्यंतचा प्रवास दाखवला आहे.
+        </p>
+        <p>
+          चित्रपटाचे दिग्दर्शन [दिग्दर्शकाचे नाव] यांनी केले असून मुख्य भूमिकेत [अभिनेत्याचे नाव] आहेत.
+        </p>
+      </div>
+    </section>
 
-  <section id="videos">
-    <h2>स्वातंत्र्यवीर सावरकर - व्हिडिओ</h2>
-    <div class="video-group">
-      <h3>पु.ल. देशपांडे:</h3>
-      <iframe src="https://www.youtube.com/embed/3OhwGqpBSUw"></iframe>
-    </div>
-    <div class="video-group">
-      <h3>शरद पोंक्षे:</h3>
-      <iframe src="https://www.youtube.com/embed/sEnDbIkJyQY"></iframe>
-      <iframe src="https://www.youtube.com/embed/39yFJLJgmIY"></iframe>
-      <iframe src="https://www.youtube.com/embed/F82c7IECTIc"></iframe>
-    </div>
-    <div class="video-group">
-      <h3>चारुदत्त आफळे:</h3>
-      <iframe src="https://www.youtube.com/embed/GguEIpps3fc"></iframe>
-      <iframe src="https://www.youtube.com/embed/6VOxG7itlT8"></iframe>
-    </div>
-  </section>
+    <!-- Videos Section -->
+    <section id="videos" class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mb-6 flex items-center justify-center">
+        <i class="fas fa-video mr-3"></i> स्वातंत्र्यवीर सावरकर - व्हिडिओ
+      </h2>
+      
+      <div class="video-group">
+        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center justify-center">
+          <i class="fas fa-user mr-2"></i> पु.ल. देशपांडे:
+        </h3>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/3OhwGqpBSUw" allowfullscreen></iframe>
+        </div>
+      </div>
+      
+      <div class="video-group">
+        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center justify-center">
+          <i class="fas fa-user mr-2"></i> शरद पोंक्षे:
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/sEnDbIkJyQY" allowfullscreen></iframe>
+          </div>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/39yFJLJgmIY" allowfullscreen></iframe>
+          </div>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/F82c7IECTIc" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      
+      <div class="video-group">
+        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center justify-center">
+          <i class="fas fa-user mr-2"></i> चारुदत्त आफळे:
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/GguEIpps3fc" allowfullscreen></iframe>
+          </div>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/6VOxG7itlT8" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="nathuram">
-    <h2>मी नथुराम गोडसे बोलतोय</h2>
-    <p>
-      सुपरहिट मराठी नाटक "मी नथुराम गोडसे बोलतोय" (Mi Nathuram Godse Boltoy) हे प्रदीप दळवी लिखित आणि माऊली प्रॉडक्शन्सच्या उदय धुरत यांनी निर्मित केलेले एक दोन अंकी नाटक आहे. हे नाटक गोपाळ गोडसे यांच्या "May It Please You Honour" या पुस्तकावर आधारित आहे.
-    </p>
-    <iframe src="https://www.youtube.com/embed/Wew_hkqWUg0"></iframe>
-  </section>
+    <!-- Nathuram Godse Play Section -->
+    <section id="nathuram" class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mb-6 flex items-center justify-center">
+        <i class="fas fa-theater-masks mr-3"></i> मी नथुराम गोडसे बोलतोय
+      </h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Wew_hkqWUg0" allowfullscreen></iframe>
+      </div>
+      <div class="mt-6 text-gray-700 dark:text-gray-300">
+        <p class="mb-4">
+          सुपरहिट मराठी नाटक "मी नथुराम गोडसे बोलतोय" (Mi Nathuram Godse Boltoy) हे प्रदीप दळवी लिखित आणि माऊली प्रॉडक्शन्सच्या उदय धुरत यांनी निर्मित केलेले एक दोन अंकी नाटक आहे. हे नाटक गोपाळ गोडसे यांच्या "May It Please You Honour" या पुस्तकावर आधारित आहे.
+        </p>
+        <p>
+          नाटकात नथुराम गोडसे यांच्या दृष्टिकोनातून महात्मा गांधींच्या हत्येच्या घटनेचे वर्णन केले आहे. हे नाटक मराठी रंगभूमीवरील सर्वात चर्चित नाटकांपैकी एक आहे.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-orange-500 dark:bg-orange-700 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h3 class="text-xl font-bold">|| अखंड भारत ||</h3>
+          <p class="mt-2">विनायक दामोदर सावरकर - स्वातंत्र्यवीरांची गाथा</p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="text-white hover:text-orange-200 text-2xl">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" class="text-white hover:text-orange-200 text-2xl">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-white hover:text-orange-200 text-2xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-white hover:text-orange-200 text-2xl">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-6 text-center text-sm">
+        <p>© 2024 अखंड भारत. सर्व हक्क राखीव.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Savarkar Modal -->
+  <div id="savarkarModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('savarkarModal')">&times;</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-orange-500 dark:text-orange-400 mb-4">विनायक दामोदर सावरकर</h2>
+      <div class="text-gray-700 dark:text-gray-300">
+        <p class="mb-4">
+          विनायक दामोदर सावरकर (जन्म : भगूर-नाशिक, २८ मे १८८३; - मुंबई, २६ फेब्रुवारी १९६६) हे भारतीय स्वातंत्र्यसैनिक, राजकारणी, समाजसुधारक, मराठी कवी व लेखक होते. तसेच ते हिंदू तत्त्वज्ञ, आणि भाषाशुद्धी व लिपिशुद्धी ह्या चळवळींचे प्रणेते होते. १९३८ च्या साहित्य संमेलनाचे अध्यक्ष होते. 'हिंदुत्व' या संकल्पनेचे प्रणेते असून सर्वसमावेशक हिंदुत्व मांडणारे होते.
+        </p>
+        <h3 class="text-xl font-semibold mb-2">प्रमुख कार्ये:</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li class="mb-2">१८५७ च्या स्वातंत्र्यसमराचा इतिहास (पुस्तक)</li>
+          <li class="mb-2">हिंदुत्व (पुस्तक)</li>
+          <li class="mb-2">माझी जन्मठेप (आत्मचरित्र)</li>
+          <li class="mb-2">काला पाणी (आत्मचरित्र)</li>
+          <li>सावरकरांची कविता (काव्यसंग्रह)</li>
+        </ul>
+        <h3 class="text-xl font-semibold mb-2">महत्त्वाचे तत्त्वज्ञान:</h3>
+        <p>
+          सावरकरांनी 'हिंदुत्व' या संकल्पनेचे स्पष्टीकरण केले. त्यांच्या मते, हिंदुत्व म्हणजे फक्त धार्मिक संकल्पना नसून ती एक सांस्कृतिक, ऐतिहासिक आणि राष्ट्रीय ओळख आहे. त्यांनी हिंदूंच्या एकतेसाठी आणि स्वाभिमानासाठी काम केले.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <script>
+    // Loading spinner
+    window.addEventListener('load', function() {
+      document.getElementById('loader').style.display = 'none';
+    });
+
+    // Mobile menu toggle
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('mobileMenu').classList.remove('active');
+      });
+    });
+
+    // Theme toggle
     function toggleTheme() {
       const html = document.documentElement;
-      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+      const currentTheme = html.dataset.theme;
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = newTheme;
+      localStorage.setItem('theme', newTheme);
+      
+      // Update theme button icon
+      const themeIcon = document.querySelector('#themeBtn i');
+      themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      
+      // Update tooltip text
+      const tooltipText = document.querySelector('#themeBtn .tooltiptext');
+      tooltipText.textContent = newTheme === 'dark' ? 'प्रकाश मोड' : 'अंधार मोड';
     }
 
-    function toggleLanguage() {
-      alert("Language toggle feature coming soon!");
+    // Check for saved theme preference
+    if (localStorage.getItem('theme')) {
+      document.documentElement.dataset.theme = localStorage.getItem('theme');
+      const themeIcon = document.querySelector('#themeBtn i');
+      themeIcon.className = localStorage.getItem('theme') === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
+
+    // Language toggle
+    function toggleLanguage() {
+      alert("भाषा बदलण्याची सुविधा लवकरच उपलब्ध होईल!");
+    }
+
+    // Back to top button
+    window.addEventListener('scroll', function() {
+      const backToTop = document.getElementById('backToTop');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    document.getElementById('backToTop').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target.className === 'modal') {
+        event.target.style.display = 'none';
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
   </script>
 </body>
 
