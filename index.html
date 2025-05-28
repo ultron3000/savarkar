@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="mr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,35 +67,18 @@
 
     /* Animations */
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
-    .fade-in {
-      animation: fadeIn 0.8s ease-in-out;
-    }
-
-    .pulse:hover {
-      animation: pulse 1.5s infinite;
-    }
+    .fade-in { animation: fadeIn 0.8s ease-in-out; }
+    .pulse:hover { animation: pulse 1.5s infinite; }
 
     /* Header with Parallax Effect */
     .parallax {
@@ -170,13 +152,8 @@
       transition: opacity 0.3s;
     }
 
-    .back-to-top.visible {
-      opacity: 1;
-    }
-
-    .back-to-top:hover {
-      background-color: var(--orange-light);
-    }
+    .back-to-top.visible { opacity: 1; }
+    .back-to-top:hover { background-color: var(--orange-light); }
 
     /* Loading Spinner */
     .loader {
@@ -202,9 +179,7 @@
       transition: transform 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+    .card:hover { transform: translateY(-5px); }
 
     /* Custom Button */
     .btn {
@@ -306,9 +281,7 @@
       cursor: pointer;
     }
 
-    .close:hover {
-      color: var(--orange);
-    }
+    .close:hover { color: var(--orange); }
 
     /* Responsive Grid */
     .grid-responsive {
@@ -333,9 +306,7 @@
       transition: all 0.5s ease;
     }
 
-    .mobile-menu.active {
-      display: flex;
-    }
+    .mobile-menu.active { display: flex; }
 
     .mobile-menu a {
       color: var(--text-color);
@@ -401,9 +372,7 @@
       border-radius: 2px;
     }
 
-    .video-group {
-      margin-bottom: 3rem;
-    }
+    .video-group { margin-bottom: 3rem; }
 
     .video-group h3 {
       font-size: 1.8rem;
@@ -413,26 +382,16 @@
     }
 
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
-      nav {
-        display: none;
-      }
+      .hamburger { display: block; }
+      nav { display: none; }
 
       .theme-toggle, .language-toggle {
         position: fixed;
         top: 1rem;
       }
 
-      .theme-toggle {
-        right: 1rem;
-      }
-
-      .language-toggle {
-        right: 4rem;
-      }
+      .theme-toggle { right: 1rem; }
+      .language-toggle { right: 4rem; }
 
       header h1 {
         font-size: 2rem;
@@ -451,48 +410,136 @@
         padding: 2rem 0;
       }
 
-      .header-content {
-        padding: 2rem 1rem;
-      }
-
-      .savarkar-banner {
-        max-width: 90%;
-        margin-bottom: 2rem;
-      }
-
-      .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-      }
-
-      section h2 {
-        font-size: 2rem;
-      }
-
-      .video-group h3 {
-        font-size: 1.5rem;
-      }
+      .header-content { padding: 2rem 1rem; }
+      .savarkar-banner { max-width: 90%; margin-bottom: 2rem; }
+      .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+      section h2 { font-size: 2rem; }
+      .video-group h3 { font-size: 1.5rem; }
     }
 
     @media (max-width: 480px) {
-      .header-content {
-        text-align: center;
-      }
+      .header-content { text-align: center; }
+      .header-content .flex { flex-direction: column; gap: 1rem; }
+      .modal-content { margin: 5% auto; width: 95%; padding: 1.5rem; }
+      section h2 { font-size: 1.8rem; }
+    }
 
-      .header-content .flex {
-        flex-direction: column;
-        gap: 1rem;
-      }
+    /* Collapsible Sections */
+    .collapsible {
+      cursor: pointer;
+      padding: 1rem;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--orange);
+      background-color: transparent;
+      border-bottom: 2px solid var(--orange);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .modal-content {
-        margin: 5% auto;
-        width: 95%;
-        padding: 1.5rem;
-      }
+    .collapsible:after {
+      content: '\002B';
+      font-weight: bold;
+      margin-left: 5px;
+    }
 
-      section h2 {
-        font-size: 1.8rem;
-      }
+    .active:after { content: "\2212"; }
+
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background-color: var(--bg-secondary);
+      border-radius: 0 0 12px 12px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--orange);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -12px;
+      background-color: white;
+      border: 4px solid var(--orange);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left { left: 0; }
+    .right { left: 50%; }
+
+    .left::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      right: 30px;
+      border: medium solid var(--orange);
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent var(--orange);
+    }
+
+    .right::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: 30px;
+      border: medium solid var(--orange);
+      border-width: 10px 10px 10px 0;
+      border-color: transparent var(--orange) transparent transparent;
+    }
+
+    .timeline-content {
+      padding: 20px 30px;
+      background-color: var(--bg-secondary);
+      position: relative;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+    }
+
+    @media screen and (max-width: 600px) {
+      .timeline::after { left: 31px; }
+      .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+      .timeline-item::before { left: 60px; border: medium solid var(--orange); }
+      .left::before, .right::before { border-width: 10px 10px 10px 0; border-color: transparent var(--orange) transparent transparent; }
+      .left::after, .right::after { left: 15px; }
+      .right { left: 0%; }
     }
   </style>
 </head>
@@ -514,6 +561,7 @@
     <a href="#savarkar-movie" class="p-2 hover:text-orange-500">चित्रपट</a>
     <a href="#videos" class="p-2 hover:text-orange-500">व्हिडिओ</a>
     <a href="#nathuram" class="p-2 hover:text-orange-500">नाटक</a>
+    <a href="#timeline" class="p-2 hover:text-orange-500">जीवनचरित्र</a>
     <button onclick="toggleTheme()" class="mt-4 p-2 bg-orange-500 text-white rounded-lg">
       <i class="fas fa-moon"></i> थीम बदला
     </button>
@@ -549,6 +597,9 @@
             <a href="#videos" class="btn pulse">
               <i class="fas fa-video mr-2"></i> व्हिडिओ पाहा
             </a>
+            <a href="#timeline" class="btn pulse">
+              <i class="fas fa-history mr-2"></i> जीवनचरित्र
+            </a>
           </div>
         </div>
         <img src="https://i.pinimg.com/736x/ce/b5/05/ceb505c850279dbcbda44db3094d735f.jpg" 
@@ -573,6 +624,9 @@
         </a>
         <a href="#nathuram" class="text-white hover:text-orange-100 font-bold text-lg transition duration-300">
           <i class="fas fa-theater-masks mr-1"></i> नाटक
+        </a>
+        <a href="#timeline" class="text-white hover:text-orange-100 font-bold text-lg transition duration-300">
+          <i class="fas fa-history mr-1"></i> जीवनचरित्र
         </a>
       </div>
     </div>
@@ -606,6 +660,78 @@
       </div>
     </section>
 
+    <!-- Timeline Section -->
+    <section id="timeline" class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mb-6 flex items-center justify-center">
+        <i class="fas fa-history mr-3"></i> सावरकरांचे जीवनचरित्र
+      </h2>
+      
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१८८३: जन्म</h3>
+            <p>विनायक दामोदर सावरकर यांचा जन्म २८ मे १८८३ रोजी महाराष्ट्रातील नाशिक जिल्ह्यातील भगूर गावी झाला.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९०१: मॅट्रिक पास</h3>
+            <p>सावरकरांनी १९०१ मध्ये मॅट्रिक परीक्षा उत्तीर्ण केली. त्यांनी पुढील शिक्षणासाठी पुण्याच्या फर्ग्युसन कॉलेजमध्ये प्रवेश घेतला.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९०५: अभिनव भारत सोसायटी</h3>
+            <p>सावरकरांनी १९०५ मध्ये 'अभिनव भारत' नावाची क्रांतिकारी संस्था स्थापन केली.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९०६: इंग्लंडला प्रस्थान</h3>
+            <p>१९०६ मध्ये सावरकर इंग्लंडला गेले आणि तेथे इंडिया हाऊसमध्ये राहू लागले.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९०९: नाशिकचा जिल्हाधिकारी वध</h3>
+            <p>सावरकरांच्या प्रेरणेने मदनलाल ढींगरा यांनी १९०९ मध्ये लंडनमध्ये कर्झन वायली या ब्रिटिश अधिकाऱ्याचा वध केला.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९१०: अटक आणि कालापाणी</h3>
+            <p>१९१० मध्ये सावरकरांना अटक करण्यात आली आणि त्यांना कालापाणीची शिक्षा देण्यात आली.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९२४: रत्नागिरीत नजरकैद</h3>
+            <p>१९२४ मध्ये सावरकरांना रत्नागिरीत नजरकैदेत ठेवण्यात आले.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९३७: हिंदू महासभा</h3>
+            <p>१९३७ मध्ये सावरकर हिंदू महासभेचे अध्यक्ष झाले.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 class="font-bold text-xl mb-2">१९६६: निधन</h3>
+            <p>२६ फेब्रुवारी १९६६ रोजी मुंबईत सावरकरांचे निधन झाले.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Savarkar Movie Section -->
     <section id="savarkar-movie" class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mb-6 flex items-center justify-center">
@@ -630,19 +756,15 @@
         <i class="fas fa-video mr-3"></i> स्वातंत्र्यवीर सावरकर - व्हिडिओ
       </h2>
       
-      <div class="video-group">
-        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center justify-center">
-          <i class="fas fa-user mr-2"></i> पु.ल. देशपांडे:
-        </h3>
+      <button class="collapsible" onclick="toggleCollapsible(this)">पु.ल. देशपांडे</button>
+      <div class="collapsible-content">
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/3OhwGqpBSUw" allowfullscreen></iframe>
         </div>
       </div>
       
-      <div class="video-group">
-        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center justify-center">
-          <i class="fas fa-user mr-2"></i> शरद पोंक्षे:
-        </h3>
+      <button class="collapsible mt-4" onclick="toggleCollapsible(this)">शरद पोंक्षे</button>
+      <div class="collapsible-content">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/sEnDbIkJyQY" allowfullscreen></iframe>
@@ -656,10 +778,8 @@
         </div>
       </div>
       
-      <div class="video-group">
-        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center justify-center">
-          <i class="fas fa-user mr-2"></i> चारुदत्त आफळे:
-        </h3>
+      <button class="collapsible mt-4" onclick="toggleCollapsible(this)">चारुदत्त आफळे</button>
+      <div class="collapsible-content">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/GguEIpps3fc" allowfullscreen></iframe>
@@ -845,7 +965,26 @@
         }
       });
     });
+
+    // Collapsible sections
+    function toggleCollapsible(element) {
+      element.classList.toggle("active");
+      const content = element.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } 
+    }
+
+    // Initialize collapsibles to be open by default
+    document.addEventListener('DOMContentLoaded', function() {
+      const collapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach(coll => {
+        coll.classList.add('active');
+        coll.nextElementSibling.style.maxHeight = coll.nextElementSibling.scrollHeight + "px";
+      });
+    });
   </script>
 </body>
-
 </html>
